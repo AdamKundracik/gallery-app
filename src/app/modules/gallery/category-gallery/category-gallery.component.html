@@ -1,0 +1,29 @@
+<div class="background">
+  <div class="container">
+    <div class="contentLabel">
+      <div class="label">
+        <div>
+          <span class="photoLabel">Fotogaleria</span>
+        </div>
+        <br>
+        <div class="categoryName" (click)="redirectToGallery()">
+          <span class="categoriesLabel"><i class="gg-arrow-left"></i>{{category}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="category-container">
+      <div class="category-item" *ngFor="let images of categoryData">
+        <div class="photo"
+          [style.backgroundImage]="'url(http://api.programator.sk/images/360x360/' + images?.fullpath + ')'">
+        </div>
+      </div>
+      <div class="add-category-item">
+        <div class="addLabel">
+          <i class="gg-add-r"></i>
+          <br>
+          <span>Pridat fotku</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

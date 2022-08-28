@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="header">
+    <div>
+      <span class="label">Pridat Kategoriu</span>
+    </div>
+    <div>
+      <i class="gg-close" (click)="closeDialog()"></i>
+    </div>
+  </div>
+  <form [formGroup]="categoryForm" class="form">
+    <div>
+      <input formControlName="category" class="categoryInput" type="text" tabindex="-1" />
+    </div>
+    <br>
+    <div>
+      <button class="submit"><span>Pridat</span></button>
+    </div>
+  </form>
+
+</div>
