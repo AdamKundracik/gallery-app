@@ -1,4 +1,3 @@
-import { GalleryService } from './../../../../../../gallery/src/app/modules/gallery/gallery.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
