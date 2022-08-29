@@ -44,13 +44,31 @@ body {
 
 }
 
-@font-face {font-family: "Barlow Medium"; src: url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.eot"); src: url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.woff") format("woff"), url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.svg#Barlow Medium") format("svg"); }
+html, body {
+  font-family: "Barlow";
+}
 
+@font-face {
+  font-family: "Barlow Medium";
+  src: url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.eot");
+  src: url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.eot?#iefix") format("embedded-opentype"),
+      url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.woff2") format("woff2"),
+      url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.woff") format("woff"),
+      url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.ttf") format("truetype"),
+      url("//db.onlinewebfonts.com/t/0d04602b435c3455cfa65dd27d8552ea.svg#Barlow Medium") format("svg");
+    }
+
+@font-face {
+    font-family: "Barlow";
+    src: url("//db.onlinewebfonts.com/t/795640e2e50d64eb829116ba8f81739d.eot");
+    src: url("//db.onlinewebfonts.com/t/795640e2e50d64eb829116ba8f81739d.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/795640e2e50d64eb829116ba8f81739d.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/795640e2e50d64eb829116ba8f81739d.woff") format("woff"), url("//db.onlinewebfonts.com/t/795640e2e50d64eb829116ba8f81739d.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/795640e2e50d64eb829116ba8f81739d.svg#Barlow") format("svg");
+    }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-dialog-container {
   border-radius: 20px !important;
+  padding: 48px !important;
 }
 

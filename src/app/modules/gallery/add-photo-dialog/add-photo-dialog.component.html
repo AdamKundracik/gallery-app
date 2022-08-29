@@ -1,17 +1,28 @@
 <div class="container">
   <div class="header">
     <div>
-      <span class="label">Pridať fotkz</span>
+      <span class="label">Pridať fotky</span>
     </div>
     <div>
       <i class="gg-close" (click)="closeDialog(null)"></i>
     </div>
   </div>
-  <form [formGroup]="categoryForm" class="form">
-    <div>
-      <input formControlName="name" class="categoryInput" type="text" placeholder="Názov" />
+  <form class="form" enctype="multipart/form-data">
+    <div class="box__input">
+      <div class="drag_and_drop-visual">
+        <i class="gg-image"></i>
+        <div class="text">
+          <span class="row-1">Sem presunte fotky</span>
+          <span class="row-2">alebo</span>
+          <button class="addFileButton">
+            <label class="row-3">
+              Vybrat subory
+              <input type="file" style="display: none" file-handler>
+            </label>
+          </button>
+        </div>
+      </div>
     </div>
-    <br>
     <div>
       <button class="submit"><span>Pridať</span></button>
     </div>

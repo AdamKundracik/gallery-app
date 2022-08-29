@@ -35,7 +35,7 @@ export class CategoryGalleryComponent implements OnInit {
   public openDialog(): void {
     this.dialog.open(AddPhotoDialogComponent, {
       width: '560px',
-      height: '325px',
+      height: '499px',
     }).afterClosed().subscribe(response => {
       if (response) {
         this.categoryData.unshift(response)
