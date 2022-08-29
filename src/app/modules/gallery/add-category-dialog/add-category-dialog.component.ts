@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { GalleryService } from '../gallery.service';
 
 @Component({
   selector: 'app-add-category-dialog',
@@ -9,12 +10,13 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddCategoryDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AddCategoryDialogComponent>, private fb: FormBuilder) { }
+  constructor(public dialogRef: MatDialogRef<AddCategoryDialogComponent>, private fb: FormBuilder, private galleryService: GalleryService) { }
+
+
 
   public categoryForm: FormGroup = new FormGroup({
-    category: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
   });
-
 
 
   ngOnInit(): void {
@@ -24,13 +26,19 @@ export class AddCategoryDialogComponent implements OnInit {
     return this.categoryForm.controls;
   }
 
-  public closeDialog(): void {
-    this.dialogRef.close();
+  public closeDialog(gallery: any): void {
+
+    this.dialogRef.close(gallery);
   }
 
-  // public submit(): void {
-  //   if (this.categoryForm.valid) {
-  //   }
-  // }
+  public submit(): void {
+    if (this.categoryForm.valid) {
+      console.log(this.categoryForm.get("name")?.value)
+      this.galleryService.createCategory(this.categoryForm.value).subscribe(response => {
+        this.closeDialog(response)
+        this.galleryService.getGallery();
+      })
+    }
+  }
 
 }

@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AddPhotoDialogComponent } from './../add-photo-dialog/add-photo-dialog.component';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryService } from '../gallery.service';
 
@@ -13,7 +15,7 @@ export class CategoryGalleryComponent implements OnInit {
 
   public category: string = "";
 
-  constructor(private galleryService: GalleryService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private galleryService: GalleryService, private route: ActivatedRoute, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -30,11 +32,22 @@ export class CategoryGalleryComponent implements OnInit {
     this.router.navigateByUrl('/gallery')
   }
 
-
-  private getCategoryData(category: string): void {
-    this.galleryService.getCategory(category).subscribe(res => {
-      this.categoryData = res;
-      console.log(this.categoryData)
+  public openDialog(): void {
+    this.dialog.open(AddPhotoDialogComponent, {
+      width: '560px',
+      height: '325px',
+    }).afterClosed().subscribe(response => {
+      if (response) {
+        this.categoryData.unshift(response)
+      }
     })
   }
+
+  private getCategoryData(category: string): void {
+    this.galleryService.getCategory(category).subscribe(photos => {
+      this.categoryData = photos;
+    })
+  }
+
+
 }

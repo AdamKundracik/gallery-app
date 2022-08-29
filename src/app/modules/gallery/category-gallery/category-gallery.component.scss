@@ -26,6 +26,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 40px;
+  padding-bottom: 100px;
   .category-item {
     flex: 0 1 auto;
     height: 295px;
@@ -130,6 +131,7 @@
 
 
 .contentLabel {
+  margin-top: 100px;
   margin-bottom: 100px;
   display: inline-block;
   width:100%;

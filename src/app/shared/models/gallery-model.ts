@@ -1,8 +1,9 @@
 import { ImagesDTO } from './ImagesDTO';
 
 
-export interface galleryModel {
-  path: string,
-  image: Array<ImagesDTO>;
-  name: string
+export interface GalleryModel {
+  path: string;
+  images?: ImagesDTO[];
+  image?: ImagesDTO;
+  name: string;
 }

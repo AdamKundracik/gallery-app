@@ -1,5 +1,5 @@
-import { galleryModel } from './gallery-model';
+import { GalleryModel } from './gallery-model';
 
-export interface galleriesModel {
-  galleries: Array<galleryModel>;
+export interface GalleriesModel {
+  galleries: GalleryModel[];
 }

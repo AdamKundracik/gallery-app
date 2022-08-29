@@ -3,7 +3,7 @@
     <div class="contentLabel">
       <div class="label">
         <div>
-          <span class="photoLabel">Fotogaleria</span>
+          <span class="photoLabel">Fotogaléria</span>
         </div>
         <br>
         <div>
@@ -13,7 +13,8 @@
     </div>
     <div class="category-container">
       <div class="category-item" *ngFor="let category of galleryData">
-        <div class="counter"><span class="numberCounter">10 fotiek</span></div>
+        <div class="counter"><span class="numberCounter">{{category?.images?.length | photoPipe}}
+          </span></div>
         <div class="photo"
           [style.backgroundImage]="'url(http://api.programator.sk/images/360x360/' + category?.image?.fullpath + ')'"
           (click)="redirectToGallery(category?.name)">
@@ -25,7 +26,7 @@
         <div class="addLabel">
           <i class="gg-add-r"></i>
           <br>
-          <span>Pridat kategoriu</span>
+          <span>Pridať kategóriu</span>
         </div>
       </div>
     </div>

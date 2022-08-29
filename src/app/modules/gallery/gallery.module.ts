@@ -1,3 +1,4 @@
+import { PhotoPipe } from './../../shared/pipes/photoPipe.pipe';
 import { AddCategoryDialogComponent } from './add-category-dialog/add-category-dialog.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,6 +7,7 @@ import { GalleryRoutingModule } from './gallery-routing.module';
 import { CategoryGalleryComponent } from './category-gallery/category-gallery.component';
 import { MatDialogActions, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddPhotoDialogComponent } from './add-photo-dialog/add-photo-dialog.component';
 
 
 
@@ -13,7 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     MainGalleryComponent,
     CategoryGalleryComponent,
-    AddCategoryDialogComponent
+    AddCategoryDialogComponent,
+    PhotoPipe,
+    AddPhotoDialogComponent
   ],
   entryComponents: [
     AddCategoryDialogComponent

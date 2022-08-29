@@ -1,26 +1,29 @@
+import { ImagesDTO } from './../../shared/models/ImagesDTO';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';;
 import { map, Observable } from 'rxjs';
-import { createCategoryDTO } from 'src/app/shared/models/createCategoryDTO';
+import { CreateCategoryDTO } from 'src/app/shared/models/createCategoryDTO';
+import { GalleriesModel } from 'src/app/shared/models/galleries-model';
+import { GalleryModel } from 'src/app/shared/models/gallery-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GalleryService {
 
-  private readonly API_URL = `http://api.programator.sk/`
+  private readonly API_URL = `http://api.programator.sk`
 
   constructor(private http: HttpClient) { }
 
-  public getGallery(): Observable<any[]> {
-    return this.http.get<any>(`${this.API_URL}/gallery`).pipe(map(data => data.galleries))
+  public getGallery(): Observable<GalleryModel[]> {
+    return this.http.get<GalleriesModel>(`${this.API_URL}/gallery`).pipe(map((data: GalleriesModel) => data.galleries))
   }
 
-  public getCategory(category: string): Observable<any[]> {
-    return this.http.get<any>(`${this.API_URL}/gallery/${category}`).pipe(map(data => data.images))
+  public getCategory(category: string): Observable<ImagesDTO[]> {
+    return this.http.get<GalleryModel>(`${this.API_URL}/gallery/${category}`).pipe(map((data: GalleryModel) => data.images as ImagesDTO[]))
   }
 
-  // public createCategory(category: string, dto: createCategoryDTO) {
-  //   return this.http.post(`${this.API_URL}/gallery/${category}`, dto)
-  // }
+  public createCategory(dto: CreateCategoryDTO) {
+    return this.http.post(`${this.API_URL}/gallery`, dto)
+  }
 }
