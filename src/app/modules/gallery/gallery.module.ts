@@ -9,6 +9,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddPhotoDialogComponent } from './add-photo-dialog/add-photo-dialog.component';
 import { PhotoPipe } from 'src/app/shared/pipes/photoPipe.pipe';
+import { DndDirective } from './dnd.directive';
 
 
 
@@ -18,7 +19,8 @@ import { PhotoPipe } from 'src/app/shared/pipes/photoPipe.pipe';
     CategoryGalleryComponent,
     AddCategoryDialogComponent,
     PhotoPipe,
-    AddPhotoDialogComponent
+    AddPhotoDialogComponent,
+    DndDirective
   ],
   entryComponents: [
     AddCategoryDialogComponent

@@ -7,25 +7,24 @@
       <i class="gg-close" (click)="closeDialog(null)"></i>
     </div>
   </div>
-  <form class="form" enctype="multipart/form-data">
+
+  <div class="containerDrop" appDnd (fileDropped)="onFileDropped($event)">
     <div class="box__input">
       <div class="drag_and_drop-visual">
+        <input type="file" id="drop" style="display: none" #fileDropRef id="fileDropRef"
+          (change)="fileBrowseHandler($any($event).target.files)" multiple>
         <i class="gg-image"></i>
         <div class="text">
           <span class="row-1">Sem presunte fotky</span>
           <span class="row-2">alebo</span>
-          <button class="addFileButton">
-            <label class="row-3">
-              Vybrat subory
-              <input type="file" style="display: none" file-handler>
-            </label>
-          </button>
+          <label class="row-3" for="fileDropRef">
+            <span class="text">Vybrat subory</span>
+          </label>
         </div>
       </div>
     </div>
     <div>
       <button class="submit"><span>Pridať</span></button>
     </div>
-  </form>
-
+  </div>
 </div>
