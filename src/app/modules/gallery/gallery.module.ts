@@ -1,4 +1,3 @@
-
 import { AddCategoryDialogComponent } from './add-category-dialog/add-category-dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,8 +10,6 @@ import { AddPhotoDialogComponent } from './add-photo-dialog/add-photo-dialog.com
 import { PhotoPipe } from 'src/app/shared/pipes/photoPipe.pipe';
 import { DndDirective } from './dnd.directive';
 
-
-
 @NgModule({
   declarations: [
     MainGalleryComponent,
@@ -20,17 +17,15 @@ import { DndDirective } from './dnd.directive';
     AddCategoryDialogComponent,
     PhotoPipe,
     AddPhotoDialogComponent,
-    DndDirective
+    DndDirective,
   ],
-  entryComponents: [
-    AddCategoryDialogComponent
-  ],
+  entryComponents: [AddCategoryDialogComponent],
   imports: [
     CommonModule,
     GalleryRoutingModule,
     MatDialogModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
 })
-export class GalleryModule { }
+export class GalleryModule {}

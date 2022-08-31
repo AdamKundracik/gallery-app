@@ -5,7 +5,7 @@
         <div>
           <span class="photoLabel">Fotogaléria</span>
         </div>
-        <br>
+        <br />
         <div>
           <span class="categoriesLabel">Kategorie</span>
         </div>
@@ -13,19 +13,28 @@
     </div>
     <div class="category-container">
       <div class="category-item" *ngFor="let category of galleryData">
-        <div class="counter"><span class="numberCounter">{{category?.images?.length | photoPipe}}
-          </span></div>
-        <div class="photo"
-          [style.backgroundImage]="'url(http://api.programator.sk/images/360x360/' + category?.image?.fullpath + ')'"
-          (click)="redirectToGallery(category?.name)">
+        <div class="counter">
+          <span class="numberCounter"
+            >{{ category?.images?.length | photoPipe }}
+          </span>
         </div>
-        <div class="category"><span class="category-text">{{category?.name}}</span>
+        <div
+          class="photo"
+          [style.backgroundImage]="
+            'url(http://api.programator.sk/images/360x360/' +
+            category?.image?.fullpath +
+            ')'
+          "
+          (click)="redirectToGallery(category?.name)"
+        ></div>
+        <div class="category">
+          <span class="category-text">{{ category?.name }}</span>
         </div>
       </div>
       <div class="add-category-item" (click)="openDialog()">
         <div class="addLabel">
           <i class="gg-add-r"></i>
-          <br>
+          <br />
           <span>Pridať kategóriu</span>
         </div>
       </div>

@@ -7,22 +7,17 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: MainGalleryComponent
+    component: MainGalleryComponent,
   },
   {
     path: ':category',
-    component: CategoryGalleryComponent
-
-  }
-]
+    component: CategoryGalleryComponent,
+  },
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ],
+  imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class GalleryRoutingModule { }
-
+export class GalleryRoutingModule {}

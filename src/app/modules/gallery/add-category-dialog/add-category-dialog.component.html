@@ -9,11 +9,15 @@
   </div>
   <form [formGroup]="categoryForm" class="form" (ngSubmit)="submit()">
     <div class="control">
-      <input formControlName="name" class="categoryInput" type="text" placeholder="Názov" />
+      <input
+        formControlName="name"
+        class="categoryInput"
+        type="text"
+        placeholder="Názov kategórie"
+      />
     </div>
     <div>
       <button class="submit"><span>Pridať</span></button>
     </div>
   </form>
-
 </div>

@@ -1,5 +1,3 @@
-
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GalleryModule } from './modules/gallery/gallery.module';
@@ -15,11 +13,10 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'gallery',
   },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

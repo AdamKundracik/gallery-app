@@ -8,9 +8,8 @@ describe('AddPhotoDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddPhotoDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [AddPhotoDialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

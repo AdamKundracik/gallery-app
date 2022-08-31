@@ -5,25 +5,61 @@
         <div>
           <span class="photoLabel">Fotogaléria</span>
         </div>
-        <br>
+        <br />
         <div class="categoryName" (click)="redirectToGallery()">
-          <span class="categoriesLabel"><i class="gg-arrow-left"></i>{{category}}</span>
+          <span class="categoriesLabel"
+            ><i class="gg-arrow-left"></i>{{ category }}</span
+          >
         </div>
       </div>
     </div>
     <div class="category-container">
-      <div class="category-item" *ngFor="let images of categoryData">
-        <div class="photo"
-          [style.backgroundImage]="'url(http://api.programator.sk/images/360x360/' + images?.fullpath + ')'">
-        </div>
+      <div
+        class="category-item"
+        *ngFor="let images of categoryData; let i = index"
+        (click)="onPreviewImage(i, images.httpsPath!)"
+      >
+        <div
+          class="photo"
+          [style.backgroundImage]="
+            'url(http://api.programator.sk/images/360x360/' +
+            images?.fullpath +
+            ')'
+          "
+        ></div>
       </div>
       <div class="add-category-item" (click)="openDialog()">
         <div class="addLabel">
           <i class="gg-add-r"></i>
-          <br>
+          <br />
           <span>Pridať fotku</span>
         </div>
       </div>
+    </div>
+  </div>
+  <div *ngIf="showMask" class="lightbox">
+    <div *ngIf="previewImage" class="lightbox-img">
+      <img
+        [src]="currentLightboxImage.httpsPath"
+        [alt]="currentLightboxImage.name"
+      />
+      <button *ngIf="previewImage" class="close-btn" (click)="onClosePreview()">
+        <i class="gg-close"></i>
+      </button>
+      <button
+        *ngIf="controls"
+        class="btn-lightbox-carousel btn-prev"
+        (click)="prev()"
+      >
+        <i class="gg-arrow-left"></i>
+      </button>
+      <button
+        *ngIf="controls"
+        class="btn-lightbox-carousel btn-next"
+        (click)="next()"
+      >
+        <i class="gg-arrow-right"></i>
+      </button>
     </div>
   </div>
 </div>

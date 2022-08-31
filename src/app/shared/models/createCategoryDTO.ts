@@ -1,3 +1,3 @@
 export interface CreateCategoryDTO {
-  name: string
+  name: string;
 }
