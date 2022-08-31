@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="header">
+    <div>
+      <span class="label">Pridať fotky</span>
+    </div>
+    <div>
+      <i class="gg-close" (click)="closeDialog(null)"></i>
+    </div>
+  </div>
+
+  <div class="containerDrop" appDnd (fileDropped)="onFileDropped($event)">
+    <div class="box__input">
+      <div class="drag_and_drop-visual">
+        <input
+          type="file"
+          id="drop"
+          style="display: none"
+          #fileDropRef
+          id="fileDropRef"
+          accept="image/png, image/jpeg"
+          (change)="fileBrowseHandler($any($event).target.files)"
+          multiple
+        />
+        <i class="gg-image"></i>
+        <div class="text">
+          <span class="row-1">Sem presuňte fotky</span>
+          <span class="row-2">alebo</span>
+          <label class="row-3" for="fileDropRef">
+            <span class="text">Vybrať súbory</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="label">Vybrané súbory:</div>
+    <div *ngIf="files.length > 0">
+      <ng-container *ngFor="let file of files; let i = index">
+        <div class="files">
+          <div>{{ file.name }}</div>
+          <div class="deleteBtn">
+            <i class="gg-trash" (click)="deleteFile(i)"></i>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div *ngIf="files.length == 0">
+      <div class="warning">Nevybrali ste žiaden súbor</div>
+    </div>
+    <div>
+      <button class="submit" (click)="upload(category)">
+        <span>Pridať</span>
+      </button>
+    </div>
+  </div>
+</div>

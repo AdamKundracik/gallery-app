@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="header">
+    <div>
+      <span class="label">Pridať kategóriu</span>
+    </div>
+    <div>
+      <i class="gg-close" (click)="closeDialog(null)"></i>
+    </div>
+  </div>
+  <form [formGroup]="categoryForm" class="form" (ngSubmit)="submit()">
+    <div class="control">
+      <input
+        formControlName="name"
+        class="categoryInput"
+        type="text"
+        placeholder="Názov kategórie"
+      />
+    </div>
+    <div>
+      <button class="submit"><span>Pridať</span></button>
+    </div>
+  </form>
+</div>
