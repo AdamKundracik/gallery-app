@@ -2,8 +2,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddCategoryDialogComponent } from './../add-category-dialog/add-category-dialog.component';
 import { Router } from '@angular/router';
 import { GalleryService } from './../gallery.service';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-main-gallery',
   templateUrl: './main-gallery.component.html',
@@ -16,7 +15,7 @@ export class MainGalleryComponent implements OnInit {
     private galleryService: GalleryService,
     private router: Router,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getGalleryData();

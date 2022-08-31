@@ -1,8 +1,7 @@
-import { GalleriesModel } from './../../../shared/models/galleries-model';
+
 import { ImagesDTO } from './../../../shared/models/ImagesDTO';
-import { category } from './../../../shared/models/type';
 import { AddPhotoDialogComponent } from './../add-photo-dialog/add-photo-dialog.component';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryService } from '../gallery.service';
@@ -26,7 +25,7 @@ export class CategoryGalleryComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
