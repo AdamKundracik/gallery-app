@@ -13,7 +13,7 @@
     </div>
     <div class="category-container">
       <div class="category-item" *ngFor="let category of galleryData">
-        <div class="counter">
+        <div class="counter" (click)="redirectToGallery(category?.name)">
           <span class="numberCounter"
             >{{ category?.images?.length | photoPipe }}
           </span>
@@ -31,13 +31,9 @@
           <span class="category-text">{{ category?.name }}</span>
         </div>
       </div>
-      <div class="add-category-item" (click)="openDialog()">
-        <div class="addLabel">
-          <i class="gg-add-r"></i>
-          <br />
-          <span>Pridať kategóriu</span>
-        </div>
-      </div>
+      <app-main-gallery-add-item
+        [galleryData]="this.galleryData"
+      ></app-main-gallery-add-item>
     </div>
   </div>
 </div>

@@ -1,5 +1,4 @@
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AddCategoryDialogComponent } from './../add-category-dialog/add-category-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { GalleryService } from './../gallery.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,28 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class MainGalleryComponent implements OnInit {
   public galleryData: any[] = [];
 
-  constructor(
-    private galleryService: GalleryService,
-    private router: Router,
-    private dialog: MatDialog
-  ) { }
+  constructor(private galleryService: GalleryService, private router: Router) {}
 
   ngOnInit(): void {
     this.getGalleryData();
-  }
-
-  public openDialog(): void {
-    this.dialog
-      .open(AddCategoryDialogComponent, {
-        width: '560px',
-        height: '325px',
-      })
-      .afterClosed()
-      .subscribe((response) => {
-        if (response) {
-          this.galleryData.unshift(response);
-        }
-      });
   }
 
   public redirectToGallery(category: string): void {

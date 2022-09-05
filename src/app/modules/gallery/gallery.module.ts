@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddPhotoDialogComponent } from './add-photo-dialog/add-photo-dialog.component';
 import { PhotoPipe } from 'src/app/shared/pipes/photoPipe.pipe';
 import { DndDirective } from './dnd.directive';
+import { CategoryGalleryAddItemComponent } from './category-gallery-add-item/category-gallery-add-item.component';
+import { MainGalleryAddItemComponent } from './main-gallery-add-item/main-gallery-add-item.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import { DndDirective } from './dnd.directive';
     PhotoPipe,
     AddPhotoDialogComponent,
     DndDirective,
+    CategoryGalleryAddItemComponent,
+    MainGalleryAddItemComponent,
   ],
   entryComponents: [AddCategoryDialogComponent],
   imports: [
@@ -26,6 +31,10 @@ import { DndDirective } from './dnd.directive';
     MatDialogModule,
     ReactiveFormsModule,
     FormsModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right',
+    }),
   ],
 })
 export class GalleryModule {}

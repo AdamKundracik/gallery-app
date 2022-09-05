@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { GalleryService } from '../gallery.service';
 
 @Component({
@@ -17,7 +11,6 @@ import { GalleryService } from '../gallery.service';
 export class AddCategoryDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddCategoryDialogComponent>,
-    private fb: FormBuilder,
     private galleryService: GalleryService
   ) {}
 

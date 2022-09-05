@@ -1,10 +1,10 @@
-
 import { ImagesDTO } from './../../../shared/models/ImagesDTO';
-import { AddPhotoDialogComponent } from './../add-photo-dialog/add-photo-dialog.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryService } from '../gallery.service';
+import { API_URL } from 'src/app/shared/global variables/global-variables';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-category-gallery',
@@ -12,6 +12,8 @@ import { GalleryService } from '../gallery.service';
   styleUrls: ['./category-gallery.component.scss'],
 })
 export class CategoryGalleryComponent implements OnInit {
+  private readonly API_URL: string = API_URL;
+
   public data: string[] = [];
 
   public categoryData: ImagesDTO[] = [];
@@ -20,42 +22,40 @@ export class CategoryGalleryComponent implements OnInit {
 
   public path: string = '';
 
+  public loaded = false;
+
   constructor(
     private galleryService: GalleryService,
     private route: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog
-  ) { }
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       if (params.has('category')) {
         this.category = params.get('category')!;
         this.getCategoryData(this.category);
+        this.timeout();
       }
     });
   }
 
-  public redirectToGallery() {
-    this.router.navigateByUrl('/gallery');
+  public timeout(): void {
+    setTimeout(() => {
+      this.loaded = true;
+    }, 4000);
   }
 
-  public openDialog(): void {
-    this.dialog
-      .open(AddPhotoDialogComponent, {
-        data: {
-          category: this.category,
-        },
-        minHeight: '499px',
-        maxHeight: '700px',
-        width: '560px',
-      })
-      .afterClosed()
-      .subscribe((response) => {
-        if (response) {
-          this.categoryData.push(response);
-        }
-      });
+  addItem(newItem: ImagesDTO) {
+    this.loaded = false;
+    this.getCategoryData(this.category);
+    this.toastr.success('Fotografia úspešne pridaná');
+    this.timeout();
+  }
+
+  public redirectToGallery() {
+    this.router.navigateByUrl('/gallery');
   }
 
   private getCategoryData(category: string): void {
@@ -63,11 +63,9 @@ export class CategoryGalleryComponent implements OnInit {
       this.categoryData = photos;
       console.log(this.categoryData);
       this.categoryData.forEach((photo) => {
-        photo.httpsPath =
-          'http://api.programator.sk/images/1212x909/' + photo.fullpath;
+        photo.httpsPath = `${this.API_URL}/images/1212x909/` + photo.fullpath;
       });
     });
-    console.log(this.categoryData);
   }
 
   //PREVIEW
@@ -84,13 +82,14 @@ export class CategoryGalleryComponent implements OnInit {
     this.currentIndex = index;
     this.currentLightboxImage = this.categoryData[index];
     this.path = path;
-    console.log(this.path);
   }
 
+  @HostListener('document:keydown.escape')
   onClosePreview() {
     this.showMask = false;
   }
 
+  @HostListener('document:keydown.arrowright')
   next(): void {
     this.currentIndex = this.currentIndex + 1;
     if (this.currentIndex > this.categoryData.length - 1) {
@@ -99,6 +98,7 @@ export class CategoryGalleryComponent implements OnInit {
     this.currentLightboxImage = this.categoryData[this.currentIndex];
   }
 
+  @HostListener('document:keydown.arrowleft')
   prev(): void {
     this.currentIndex = this.currentIndex - 1;
     if (this.currentIndex < 0) {
