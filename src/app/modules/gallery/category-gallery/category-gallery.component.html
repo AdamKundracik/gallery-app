@@ -14,24 +14,33 @@
     <div class="category-container">
       <div class="category-item" *ngFor="let images of categoryData; let i = index"
         (click)="onPreviewImage(i, images.httpsPath!)">
+        <div *ngIf="!loaded" class="load">
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
         <div class="photo" [style.backgroundImage]="
             'url(http://api.programator.sk/images/360x360/' +
             images?.fullpath +
             ')'
           "></div>
       </div>
-      <div class="add-category-item" (click)="openDialog()">
-        <div class="addLabel">
-          <i class="gg-add-r"></i>
-          <br />
-          <span>Pridať fotku</span>
-        </div>
-      </div>
+      <app-category-gallery-add-item [category]="this.category" [categoryData]="this.categoryData"
+        (newItemEvent)="addItem($event)">
+      </app-category-gallery-add-item>
     </div>
   </div>
   <div *ngIf="showMask" class="lightbox">
     <div *ngIf="previewImage" class="lightbox-img">
-      <img [src]="currentLightboxImage.httpsPath" [alt]="currentLightboxImage.name" />
+      <img [src]="currentLightboxImage.httpsPath" [alt]="currentLightboxImage.name" (keydown.ArrowLeft)="prev()"
+        (keydown.escape)="onClosePreview()" (keydown.ArrowRight)="next()" />
       <button *ngIf="previewImage" class="close-btn" (click)="onClosePreview()">
         <i class="gg-close"></i>
       </button>

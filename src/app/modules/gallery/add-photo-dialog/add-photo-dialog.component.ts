@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { GalleryService } from './../gallery.service';
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -15,8 +16,8 @@ export class AddPhotoDialogComponent {
 
   constructor(
     private dialogRef: MatDialogRef<AddPhotoDialogComponent>,
-    private route: ActivatedRoute,
     private galleryService: GalleryService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) data: { category: string }
   ) {
     this.category = data.category;
@@ -44,7 +45,7 @@ export class AddPhotoDialogComponent {
   prepareFilesList(files: any[]) {
     for (const item of files) {
       if (item.size > 8000000) {
-        console.log("PRILIS VELKY SUBOR");
+        this.toastr.error("Zvolený súbor je príliš veľká (Max 8 Mb)")
       } else {
         this.files.push(item);
       }
