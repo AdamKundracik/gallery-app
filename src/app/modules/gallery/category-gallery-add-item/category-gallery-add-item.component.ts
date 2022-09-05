@@ -11,13 +11,13 @@ import { timeout } from 'rxjs';
 @Component({
   selector: 'app-category-gallery-add-item',
   templateUrl: './category-gallery-add-item.component.html',
-  styleUrls: ['./category-gallery-add-item.component.scss']
+  styleUrls: ['./category-gallery-add-item.component.scss'],
 })
 export class CategoryGalleryAddItemComponent {
-  private readonly API_URL: string = API_URL
+  private readonly API_URL: string = API_URL;
 
   @Input()
-  public category: string = "";
+  public category: string = '';
 
   @Input()
   public categoryData: ImagesDTO[] = [];
@@ -26,14 +26,11 @@ export class CategoryGalleryAddItemComponent {
 
   public loaded = true;
 
-  constructor(
-    private dialog: MatDialog,
-  ) { }
+  constructor(private dialog: MatDialog) {}
 
   addNewItem(value: ImagesDTO) {
     this.newItemEvent.emit(value);
   }
-
 
   public openDialog(): void {
     this.dialog
@@ -51,8 +48,6 @@ export class CategoryGalleryAddItemComponent {
           this.addNewItem(response);
           this.categoryData.push(response);
         }
-      }
-      );
+      });
   }
-
 }

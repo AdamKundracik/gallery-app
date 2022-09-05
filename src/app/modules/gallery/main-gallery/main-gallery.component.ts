@@ -10,10 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainGalleryComponent implements OnInit {
   public galleryData: any[] = [];
 
-  constructor(
-    private galleryService: GalleryService,
-    private router: Router,
-  ) { }
+  constructor(private galleryService: GalleryService, private router: Router) {}
 
   ngOnInit(): void {
     this.getGalleryData();

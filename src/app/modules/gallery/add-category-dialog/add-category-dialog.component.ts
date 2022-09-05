@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { GalleryService } from '../gallery.service';
 
@@ -16,7 +12,7 @@ export class AddCategoryDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddCategoryDialogComponent>,
     private galleryService: GalleryService
-  ) { }
+  ) {}
 
   public categoryForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),

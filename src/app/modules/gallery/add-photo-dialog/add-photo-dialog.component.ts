@@ -45,7 +45,7 @@ export class AddPhotoDialogComponent {
   prepareFilesList(files: any[]) {
     for (const item of files) {
       if (item.size > 8000000) {
-        this.toastr.error("Zvolený súbor je príliš veľká (Max 8 Mb)")
+        this.toastr.error('Zvolený súbor je príliš veľká (Max 8 Mb)');
       } else {
         this.files.push(item);
       }

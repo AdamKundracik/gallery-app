@@ -14,7 +14,7 @@ import { API_URL } from 'src/app/shared/global variables/global-variables';
 export class GalleryService {
   private readonly API_URL = API_URL;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public getGallery(): Observable<GalleryModel[]> {
     return this.http

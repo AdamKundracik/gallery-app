@@ -33,8 +33,8 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ToastrModule.forRoot({
       timeOut: 1000,
-      positionClass: 'toast-bottom-right'
-    })
+      positionClass: 'toast-bottom-right',
+    }),
   ],
 })
-export class GalleryModule { }
+export class GalleryModule {}

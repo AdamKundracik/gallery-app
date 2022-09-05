@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./category-gallery.component.scss'],
 })
 export class CategoryGalleryComponent implements OnInit {
-  private readonly API_URL: string = API_URL
+  private readonly API_URL: string = API_URL;
 
   public data: string[] = [];
 
@@ -24,13 +24,12 @@ export class CategoryGalleryComponent implements OnInit {
 
   public loaded = false;
 
-
   constructor(
     private galleryService: GalleryService,
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -45,15 +44,13 @@ export class CategoryGalleryComponent implements OnInit {
   public timeout(): void {
     setTimeout(() => {
       this.loaded = true;
-    },
-      4000);
+    }, 4000);
   }
-
 
   addItem(newItem: ImagesDTO) {
     this.loaded = false;
     this.getCategoryData(this.category);
-    this.toastr.success("Fotografia úspešne pridaná")
+    this.toastr.success('Fotografia úspešne pridaná');
     this.timeout();
   }
 
@@ -66,11 +63,9 @@ export class CategoryGalleryComponent implements OnInit {
       this.categoryData = photos;
       console.log(this.categoryData);
       this.categoryData.forEach((photo) => {
-        photo.httpsPath =
-          `${this.API_URL}/images/1212x909/` + photo.fullpath;
+        photo.httpsPath = `${this.API_URL}/images/1212x909/` + photo.fullpath;
       });
     });
-
   }
 
   //PREVIEW
@@ -111,5 +106,4 @@ export class CategoryGalleryComponent implements OnInit {
     }
     this.currentLightboxImage = this.categoryData[this.currentIndex];
   }
-
 }

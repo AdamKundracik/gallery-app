@@ -11,8 +11,16 @@
   <div class="containerDrop" appDnd (fileDropped)="onFileDropped($event)">
     <div class="box__input">
       <div class="drag_and_drop-visual">
-        <input type="file" id="drop" style="display: none" #fileDropRef id="fileDropRef"
-          accept="image/png, image/jpeg, image/jpg" (change)="fileBrowseHandler($any($event).target.files)" multiple />
+        <input
+          type="file"
+          id="drop"
+          style="display: none"
+          #fileDropRef
+          id="fileDropRef"
+          accept="image/png, image/jpeg, image/jpg"
+          (change)="fileBrowseHandler($any($event).target.files)"
+          multiple
+        />
         <i class="gg-image"></i>
         <div class="text">
           <span class="row-1">Sem presuňte fotky</span>
