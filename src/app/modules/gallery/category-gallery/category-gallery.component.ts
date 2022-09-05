@@ -1,10 +1,10 @@
-
 import { ImagesDTO } from './../../../shared/models/ImagesDTO';
 import { AddPhotoDialogComponent } from './../add-photo-dialog/add-photo-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryService } from '../gallery.service';
+import { API_URL } from 'src/app/shared/global variables/global-variables';
 
 @Component({
   selector: 'app-category-gallery',
@@ -12,6 +12,8 @@ import { GalleryService } from '../gallery.service';
   styleUrls: ['./category-gallery.component.scss'],
 })
 export class CategoryGalleryComponent implements OnInit {
+  private readonly API_URL: string = API_URL
+
   public data: string[] = [];
 
   public categoryData: ImagesDTO[] = [];
@@ -24,7 +26,7 @@ export class CategoryGalleryComponent implements OnInit {
     private galleryService: GalleryService,
     private route: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +56,8 @@ export class CategoryGalleryComponent implements OnInit {
       .subscribe((response) => {
         if (response) {
           this.categoryData.push(response);
+          this.getCategoryData(this.category);
+          // this.toastr.success("Hello")
         }
       });
   }
@@ -64,7 +68,7 @@ export class CategoryGalleryComponent implements OnInit {
       console.log(this.categoryData);
       this.categoryData.forEach((photo) => {
         photo.httpsPath =
-          'http://api.programator.sk/images/1212x909/' + photo.fullpath;
+          `${this.API_URL}images/1212x909/` + photo.fullpath;
       });
     });
     console.log(this.categoryData);

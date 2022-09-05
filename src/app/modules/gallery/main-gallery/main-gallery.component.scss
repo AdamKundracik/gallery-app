@@ -34,6 +34,12 @@
     background-color: white;
     display: grid;
     grid-template-rows: 3fr 1fr;
+    box-shadow: 0px 4px 24px #00000014;
+    cursor: pointer;
+    transition: opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &:hover {
+      opacity: 0.5;
+    }
   }
   .add-category-item {
     flex: 0 1 auto;
@@ -43,6 +49,7 @@
     background-color: white;
     display: grid;
     grid-template-rows: 1fr;
+    box-shadow: 0px 4px 24px #00000014;
     cursor: pointer;
     transition: background-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     &:hover {
@@ -98,17 +105,14 @@
   object-fit: cover;
   background-size: cover;
   background-position: center;
-  cursor: pointer;
-  transition: opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  &:hover {
-    opacity: 0.5;
-  }
+
 }
 
 .counter {
   padding: 10px;
   position: absolute;
   width: 150px;
+  cursor: pointer;
 }
 
 .numberCounter {
@@ -165,20 +169,6 @@
       width: 90%;
       margin: 0 auto;
     }
-
-    // display: flex;
-    // flex-direction: column;
-    // .container {
-    //   width: 96%;
-    //   margin: auto;
-    //   display: flex;
-    //   .contentLabel {
-    //     margin: auto;
-    //   }
-    //   .category-container {
-    //     margin: auto;
-    //   }
-    // }
   }
 }
 

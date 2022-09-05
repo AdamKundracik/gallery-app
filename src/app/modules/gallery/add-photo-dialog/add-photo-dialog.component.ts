@@ -1,8 +1,5 @@
-import { map } from 'rxjs';
-import { category } from './../../../shared/models/type';
 import { GalleryService } from './../gallery.service';
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
@@ -46,7 +43,11 @@ export class AddPhotoDialogComponent {
    */
   prepareFilesList(files: any[]) {
     for (const item of files) {
-      this.files.push(item);
+      if (item.size > 8000000) {
+        console.log("PRILIS VELKY SUBOR");
+      } else {
+        this.files.push(item);
+      }
     }
     console.log(files);
   }

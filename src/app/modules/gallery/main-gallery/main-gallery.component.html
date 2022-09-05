@@ -13,20 +13,15 @@
     </div>
     <div class="category-container">
       <div class="category-item" *ngFor="let category of galleryData">
-        <div class="counter">
-          <span class="numberCounter"
-            >{{ category?.images?.length | photoPipe }}
+        <div class="counter" (click)="redirectToGallery(category?.name)">
+          <span class="numberCounter">{{ category?.images?.length | photoPipe }}
           </span>
         </div>
-        <div
-          class="photo"
-          [style.backgroundImage]="
+        <div class="photo" [style.backgroundImage]="
             'url(http://api.programator.sk/images/360x360/' +
             category?.image?.fullpath +
             ')'
-          "
-          (click)="redirectToGallery(category?.name)"
-        ></div>
+          " (click)="redirectToGallery(category?.name)"></div>
         <div class="category">
           <span class="category-text">{{ category?.name }}</span>
         </div>

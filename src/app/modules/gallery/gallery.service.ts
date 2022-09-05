@@ -6,14 +6,15 @@ import { map, Observable } from 'rxjs';
 import { CreateCategoryDTO } from 'src/app/shared/models/createCategoryDTO';
 import { GalleriesModel } from 'src/app/shared/models/galleries-model';
 import { GalleryModel } from 'src/app/shared/models/gallery-model';
+import { API_URL } from 'src/app/shared/global variables/global-variables';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GalleryService {
-  private readonly API_URL = `http://api.programator.sk`;
+  private readonly API_URL = API_URL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getGallery(): Observable<GalleryModel[]> {
     return this.http
