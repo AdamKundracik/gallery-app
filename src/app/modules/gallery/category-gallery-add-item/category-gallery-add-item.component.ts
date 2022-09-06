@@ -26,7 +26,7 @@ export class CategoryGalleryAddItemComponent {
 
   public loaded = true;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
   addNewItem(value: ImagesDTO) {
     this.newItemEvent.emit(value);
@@ -46,7 +46,6 @@ export class CategoryGalleryAddItemComponent {
       .subscribe((response) => {
         if (response) {
           this.addNewItem(response);
-          this.categoryData.push(response);
         }
       });
   }

@@ -14,7 +14,7 @@ export class MainGalleryAddItemComponent {
   @Input()
   public galleryData: any[] = [];
 
-  constructor(private dialog: MatDialog, private toastr: ToastrService) {}
+  constructor(private dialog: MatDialog, private toastr: ToastrService) { }
 
   public openDialog(): void {
     this.dialog

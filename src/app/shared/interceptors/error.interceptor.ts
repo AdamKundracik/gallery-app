@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Injectable } from '@angular/core';
 import {
   HttpErrorResponse,
@@ -11,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorCatchingInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private toastr: ToastrService) { }
 
   intercept(
     request: HttpRequest<unknown>,
@@ -20,15 +21,27 @@ export class ErrorCatchingInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         let errorMsg = '';
-        if (error.error instanceof ErrorEvent) {
-          console.log('This is client side error');
-          errorMsg = `Error: ${error.error.message}`;
+        if (error instanceof HttpErrorResponse) {
+          if (error.error instanceof ErrorEvent) {
+            console.error("Error Event");
+          } else {
+            // console.log(`error status : ${error.status} ${error.statusText}`);
+            switch (error.status) {
+              case 403:     //forbidden
+                console.error("Na toto nemáš práva!");
+                break;
+              case 500:     //server side error
+                console.error("Vyskytol sa problém na servery!");
+                break;
+              case 404:     //not found
+                console.error("Žiadaná služba sa nenašla!");
+                break;
+            }
+          }
         } else {
-          console.log('This is server side error');
-          errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+          console.error("Vyskytla sa chyba");
         }
-        console.log(errorMsg);
-        return throwError(errorMsg);
+        return throwError(() => error);
       })
     );
   }

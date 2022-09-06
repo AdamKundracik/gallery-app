@@ -12,7 +12,7 @@ export class AddCategoryDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddCategoryDialogComponent>,
     private galleryService: GalleryService
-  ) {}
+  ) { }
 
   public categoryForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -24,7 +24,6 @@ export class AddCategoryDialogComponent {
 
   public submit(): void {
     if (this.categoryForm.valid) {
-      console.log(this.categoryForm.get('name')?.value);
       this.galleryService
         .createCategory(this.categoryForm.value)
         .subscribe((response) => {
