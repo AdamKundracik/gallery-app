@@ -2,7 +2,6 @@ import { ToastrService } from 'ngx-toastr';
 import { GalleryService } from './../gallery.service';
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-photo-dialog',
@@ -50,7 +49,6 @@ export class AddPhotoDialogComponent {
         this.files.push(item);
       }
     }
-    console.log(files);
   }
 
   deleteFile(index: number) {

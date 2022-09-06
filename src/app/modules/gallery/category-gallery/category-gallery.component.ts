@@ -1,6 +1,5 @@
 import { ImagesDTO } from './../../../shared/models/ImagesDTO';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryService } from '../gallery.service';
 import { API_URL } from 'src/app/shared/global variables/global-variables';
@@ -29,7 +28,7 @@ export class CategoryGalleryComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {

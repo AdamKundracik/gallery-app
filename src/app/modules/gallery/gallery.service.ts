@@ -14,7 +14,7 @@ import { API_URL } from 'src/app/shared/global variables/global-variables';
 export class GalleryService {
   private readonly API_URL = API_URL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getGallery(): Observable<GalleryModel[]> {
     return this.http
@@ -25,7 +25,9 @@ export class GalleryService {
   public getCategory(category: string): Observable<ImagesDTO[]> {
     return this.http
       .get<GalleryModel>(`${this.API_URL}/gallery/${category}`)
-      .pipe(map((data: GalleryModel) => data.images as ImagesDTO[]));
+      .pipe(map((data: GalleryModel) => data.images as ImagesDTO[]))
+      ;
+
   }
 
   public createCategory(dto: CreateCategoryDTO) {
